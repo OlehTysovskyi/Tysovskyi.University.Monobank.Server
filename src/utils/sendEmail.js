@@ -25,4 +25,27 @@ async function sendEmail(recipient_email) {
   }
 }
 
-module.exports = { sendEmail };
+async function sendSupportEmail(req, res) {
+  const { problem_text, sender_email } = req.body;
+
+  try {
+    const info = await transporter.sendMail({
+      from: "mono_sender@outlook.com",
+      to: sender_email,
+      subject: "Support Message | Monobank",
+      text: problem_text,
+      html: "<h2>Вітаю) Я стикнувся з такою проблемою:</h2><p>" + problem_text + "</p><h3>Розраховую на вашу допомогу =)</h3>",
+    });
+
+    return res
+      .status(200)
+      .send({ message: "Support email has been successfully sended" });
+  } catch (error) {
+    console.error("Error sending email:", error);
+    return res
+      .status(400)
+      .send({ message: "Error sending while sending support email" });
+  }
+}
+
+module.exports = { sendEmail, sendSupportEmail };

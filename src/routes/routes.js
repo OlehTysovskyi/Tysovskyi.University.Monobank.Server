@@ -58,4 +58,8 @@ router.get("/profile", async (req, res) => {
   }
 });
 
+const { sendSupportEmail } = require("../utils/sendEmail");
+
+router.post("/api/send-support-email", sendSupportEmail);
+
 module.exports = router;

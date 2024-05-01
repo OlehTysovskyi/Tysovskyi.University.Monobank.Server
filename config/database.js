@@ -2,6 +2,9 @@ const { Sequelize } = require("sequelize");
 const tedious = require("tedious");
 
 const sequelize = new Sequelize("monobank", "tysyk-monobank", "A2s4D6f8", {
+  username: 'tysyk-monobank',
+  password: 'A2s4D6f8',
+  database: 'monobank',
   host: "monobank.database.windows.net",
   dialect: "mssql",
   dialectModule: tedious,

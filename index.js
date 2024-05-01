@@ -3,7 +3,7 @@ const session = require("express-session");
 const passport = require("passport");
 const cors = require("cors");
 const app = express();
-const { clientUrl } = require("../config/config");
+const { clientUrl } = require("./config/config");
 
 app.use(
   cors({
@@ -25,7 +25,7 @@ app.get("/", (req, res) => {
   res.send("Hello World from server!");
 });
 
-app.use(require("./routes/routes"));
+app.use(require("./src/routes/routes"));
 
 const PORT = process.env.PORT || 3002;
 
@@ -33,9 +33,9 @@ app.listen(PORT, () => {
   console.log(`Server is starting on port ${PORT}`);
 });
 
-const { testConnection } = require("../config/database");
+const { testConnection } = require("./config/database");
 testConnection();
 
-const createTables = require("./utils/createTables");
-const { clientUrl } = require("../config/config");
+const createTables = require("./src/utils/createTables");
+const { clientUrl } = require("./config/config");
 createTables();

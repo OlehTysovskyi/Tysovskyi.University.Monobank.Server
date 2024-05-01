@@ -37,5 +37,4 @@ const { testConnection } = require("./config/database");
 testConnection();
 
 const createTables = require("./src/utils/createTables");
-const { clientUrl } = require("./config/config");
 createTables();

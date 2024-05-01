@@ -3,10 +3,11 @@ const session = require("express-session");
 const passport = require("passport");
 const cors = require("cors");
 const app = express();
+const { clientUrl } = require("../config/config");
 
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: clientUrl,
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true,
   })
@@ -36,4 +37,5 @@ const { testConnection } = require("../config/database");
 testConnection();
 
 const createTables = require("./utils/createTables");
+const { clientUrl } = require("../config/config");
 createTables();

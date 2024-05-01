@@ -8,7 +8,7 @@ const { clientUrl } = require("../config/config");
 app.use(
   cors({
     origin: clientUrl,
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
     credentials: true,
   })
 );

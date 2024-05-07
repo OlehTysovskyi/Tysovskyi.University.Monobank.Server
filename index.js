@@ -1,6 +1,5 @@
 const express = require("express");
 const session = require("express-session");
-const RedisStore = require("connect-redis")(express);
 const passport = require("passport");
 const cors = require("cors");
 const app = express();
@@ -16,19 +15,7 @@ const { clientUrl } = require("./config/config");
 
 app.use(express.json());
 
-app.use(
-  session({
-    cookie: {
-      secure: true,
-      maxAge: 60000,
-    },
-    store: new RedisStore(),
-    secret: "secret",
-    saveUninitialized: true,
-    resave: false,
-  })
-);
-
+app.use(session({ secret: "secret", saveUninitialized: false, resave: false }));
 app.use(passport.initialize());
 app.use(passport.session());
 

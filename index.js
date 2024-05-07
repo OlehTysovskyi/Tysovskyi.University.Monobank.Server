@@ -7,7 +7,7 @@ const { clientUrl } = require("./config/config");
 
 app.use(
   cors({
-    origin: clientUrl,
+    origin: "https://tysovskyi-university-monobank-client.vercel.app/",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
     credentials: true,
   })

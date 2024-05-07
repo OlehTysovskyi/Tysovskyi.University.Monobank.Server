@@ -24,7 +24,7 @@ const loginUser = async (req, res) => {
 
     const currentCard = await Card.getUserCurrentCard(user.id);
 
-    res.status(405).json({
+    res.status(200).json({
       message: "Login successful",
       user: { id: user.id, username: user.username, email: user.email },
       currentCard: currentCard,

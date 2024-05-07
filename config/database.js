@@ -1,13 +1,8 @@
-const { Sequelize } = require("sequelize");
-const tedious = require("tedious");
+const { Sequelize } = require('sequelize');
 
-const sequelize = new Sequelize("monobank", "tysyk-monobank", "A2s4D6f8", {
-  username: 'tysyk-monobank',
-  password: 'A2s4D6f8',
-  database: 'monobank',
-  host: "monobank.database.windows.net",
-  dialect: "mssql",
-  dialectModule: tedious,
+const sequelize = new Sequelize('monobank', 'tysyk-monobank', 'A2s4D6f8', {
+  host: 'monobank.database.windows.net',
+  dialect: 'mssql',
   dialectOptions: {
     options: {
       encrypt: true,
@@ -18,9 +13,9 @@ const sequelize = new Sequelize("monobank", "tysyk-monobank", "A2s4D6f8", {
 async function testConnection() {
   try {
     await sequelize.authenticate();
-    console.log("<-Connected to database successfully.->");
+    console.log('<-Connected to database successfully.->');
   } catch (error) {
-    console.error("!-Error while connecting to database:", error);
+    console.error('!-Error while connecting to database:', error,);
   }
 }
 

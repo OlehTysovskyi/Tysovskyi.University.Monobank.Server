@@ -14,12 +14,11 @@ app.use(session({ secret: "secret", saveUninitialized: false, resave: false }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Uncomment and correct CORS configuration
-// app.use(cors({
-//   origin: clientUrl,
-//   methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
-//   credentials: true,
-// }));
+app.use(cors({
+  origin: clientUrl,
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
+  credentials: true,
+}));
 
 app.get("/", (req, res) => {
   res.send("Hello World from server!");

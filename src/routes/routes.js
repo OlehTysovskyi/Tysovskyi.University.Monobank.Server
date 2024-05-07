@@ -62,7 +62,4 @@ const { sendSupportEmail } = require("../utils/sendEmail");
 
 router.post("/api/send-support-email", sendSupportEmail);
 
-const methodNotAllowed = (req, res, next) => res.status(405).send();
-router.all(methodNotAllowed);
-
 module.exports = router;

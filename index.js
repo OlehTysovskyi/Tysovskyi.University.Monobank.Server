@@ -16,8 +16,18 @@ const { clientUrl } = require("./config/config");
 app.use(express.json());
 
 app.use(
-  session({ secret: "asdadadadad", saveUninitialized: false, resave: false })
+  session({
+    cookie: {
+      secure: true,
+      maxAge: 60000,
+    },
+    store: new RedisStore(),
+    secret: "secret",
+    saveUninitialized: true,
+    resave: false,
+  })
 );
+
 app.use(passport.initialize());
 app.use(passport.session());
 

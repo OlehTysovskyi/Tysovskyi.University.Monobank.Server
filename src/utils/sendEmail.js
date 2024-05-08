@@ -58,7 +58,7 @@ async function sendSuccessTransactionEmail(recipient_email) {
       to: recipient_email,
       subject: "Incomes email | Monobank",
       text: "",
-      html: "<h2>Вітання) На ваш рахунок було надіслано кошти:</h2>",
+      html: "<h2>Вітання) На ваш рахунок було надіслано кошти</h2>",
     });
 
     console.log("Incomes email has been successfully sended");

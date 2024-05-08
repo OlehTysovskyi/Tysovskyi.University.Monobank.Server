@@ -124,6 +124,6 @@ module.exports = {
   createCard,
   getUserCards,
   getCardById,
-  getUsernameByCardNum,
+  getUserByCardNum,
   updateBalance,
 };

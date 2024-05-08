@@ -46,6 +46,7 @@ async function createTransfer(req, res) {
 
     const user = await getUserByCardNum(recipient_card_num);
     const recipient_email = user.email;
+    console.log(recipient_email);
     sendSuccessTransferEmail(recipient_email);
 
     res.status(201).json(transfer);

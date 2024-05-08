@@ -44,7 +44,8 @@ async function createTransfer(req, res) {
       date: current_date,
     });
 
-    recipient_email = getUserByCardNum(recipient_card_num);
+    const user = await getUserByCardNum(recipient_card_num);
+    const recipient_email = user.email;
     sendSuccessTransferEmail(recipient_email);
 
     res.status(201).json(transfer);
@@ -78,10 +79,13 @@ const getUserTransfers = async (req, res) => {
         let username = "";
 
         if (type === "OUTGOING") {
-          username = await getUserByCardNum(transfer.recipient_card_num)
-            .username;
+          const recipient_user = await getUserByCardNum(
+            transfer.recipient_card_num
+          );
+          username = recipient_user.username;
         } else if (type === "INCOMING") {
-          username = await getUserByCardNum(transfer.sender_card_num).username;
+          const sender_user = await getUserByCardNum(transfer.sender_card_num);
+          username = sender_user.username;
         }
 
         return { ...transfer.toJSON(), type, username };

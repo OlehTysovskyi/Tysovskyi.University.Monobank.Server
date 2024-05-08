@@ -82,7 +82,7 @@ const getUserCards = async (req, res) => {
   }
 };
 
-const getUsernameByCardNum = async (card_number) => {
+const getUserByCardNum = async (card_number) => {
   try {
     const card = await Card.findOne({ where: { number: card_number } });
     if (!card) {
@@ -94,7 +94,7 @@ const getUsernameByCardNum = async (card_number) => {
       throw new Error("User not found");
     }
 
-    return user.username;
+    return user;
   } catch (error) {
     console.error("Error while fetching username:", error);
     throw new Error("Error while fetching username");

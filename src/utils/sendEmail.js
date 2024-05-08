@@ -34,7 +34,10 @@ async function sendSupportEmail(req, res) {
       to: sender_email,
       subject: "Support Message | Monobank",
       text: problem_text,
-      html: "<h2>Вітаю) Я стикнувся з такою проблемою:</h2><p>" + problem_text + "</p><h3>Розраховую на вашу допомогу =)</h3>",
+      html:
+        "<h2>Вітаю) Я стикнувся з такою проблемою:</h2><p>" +
+        problem_text +
+        "</p><h3>Розраховую на вашу допомогу =)</h3>",
     });
 
     return res
@@ -48,4 +51,20 @@ async function sendSupportEmail(req, res) {
   }
 }
 
-module.exports = { sendEmail, sendSupportEmail };
+async function sendSuccessTransactionEmail(recipient_email) {
+  try {
+    const info = await transporter.sendMail({
+      from: "mono_sender@outlook.com",
+      to: recipient_email,
+      subject: "Incomes email | Monobank",
+      text: "",
+      html: "<h2>Вітання) На ваш рахунок було надіслано кошти:</h2>",
+    });
+
+    console.log("Incomes email has been successfully sended");
+  } catch (error) {
+    console.error("Error sending email:", error);
+  }
+}
+
+module.exports = { sendEmail, sendSupportEmail, sendSuccessTransactionEmail };

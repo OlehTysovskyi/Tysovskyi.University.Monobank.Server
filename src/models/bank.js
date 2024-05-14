@@ -20,7 +20,7 @@ const Bank = sequelize.define(
       },
     },
     name: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
       references: {
         model: User,

@@ -77,8 +77,7 @@ const getUserCards = async (req, res) => {
     const cards = await Card.getUserCards(user_id);
     res.status(200).send({ cards: cards });
   } catch (error) {
-    console.error("Error while fetching user cards:", error);
-    res.status(500).json({ error: "Error while fetching user cards" });
+    res.status(500).json({ error: error.message });
   }
 };
 

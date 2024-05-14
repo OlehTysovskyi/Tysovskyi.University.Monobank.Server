@@ -85,13 +85,8 @@ const getUserBanks = async (req, res) => {
   try {
     const user_id = req.params.userId;
 
-    const user = await User.findByPk(user_id);
-    if (!user) {
-      return res.status(404).json({ error: "User not found" });
-    }
-
     const banks = await Bank.findAll({ where: { user_id: user_id } });
-    res.status(200).json(banks);
+    res.status(200).json({ banks: banks });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

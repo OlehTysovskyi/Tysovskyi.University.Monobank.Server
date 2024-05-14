@@ -26,15 +26,15 @@ async function generateUniqueCardNumber() {
 }
 
 async function createCard(req, res) {
-  const { user_id, type, balance } = req.body;
-  const current_date = new Date();
-  const expiry_date = new Date(
-    current_date.getFullYear() + 10,
-    current_date.getMonth(),
-    current_date.getDate()
-  );
-
   try {
+    const { user_id, type, balance } = req.body;
+    const current_date = new Date();
+    const expiry_date = new Date(
+      current_date.getFullYear() + 10,
+      current_date.getMonth(),
+      current_date.getDate()
+    );
+
     const card_number = await generateUniqueCardNumber();
 
     const card = await Card.create({
@@ -53,9 +53,9 @@ async function createCard(req, res) {
 }
 
 const getCardById = async (req, res) => {
-  const card_id = req.params.cardId;
-
   try {
+    const card_id = req.params.cardId;
+
     const card = await Card.findOne({
       where: { id: card_id },
     });
@@ -71,9 +71,9 @@ const getCardById = async (req, res) => {
 };
 
 const getUserCards = async (req, res) => {
-  const user_id = req.params.userId;
-
   try {
+    const user_id = req.params.userId;
+
     const cards = await Card.getUserCards(user_id);
     res.status(200).send({ cards: cards });
   } catch (error) {
@@ -102,10 +102,9 @@ const getUserByCardNum = async (card_number) => {
 };
 
 const updateBalance = async (req, res) => {
-  const { sender_card_num, amount } = req.body;
-  console.error("sender_card_num:", sender_card_num, "amount:", amount);
-
   try {
+    const { sender_card_num, amount } = req.body;
+
     const card = await Card.findOne({ where: { number: sender_card_num } });
     if (!card) {
       throw new Error("Card not found");

@@ -23,6 +23,8 @@ const {
   getUserBanks,
 } = require("../controllers/bankController");
 
+//===========================================All-Routes===========================================
+
 // User Routes
 router.post("/api/register", registerUser);
 router.post("/api/login", loginUser);

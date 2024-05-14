@@ -15,7 +15,7 @@ async function createTables() {
     await Account.sync();
     await Transfer.sync();
     await Payment.sync();
-    await Loan.sync();
+    // await Loan.sync();
     await Bank.sync();
 
     // await Account.update({ balance: 12053.52 }, { where: { account_id: 4 } });

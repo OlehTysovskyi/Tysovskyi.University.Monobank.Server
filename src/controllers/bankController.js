@@ -6,11 +6,6 @@ async function createBank(req, res) {
   try {
     const { user_id, name, goal_amount } = req.body;
 
-    const user = await User.findByPk(user_id);
-    if (!user) {
-      return res.status(404).json({ error: "User not found" });
-    }
-
     const bank = await Bank.create({
       user_id: user_id,
       name: name,

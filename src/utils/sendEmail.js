@@ -31,11 +31,11 @@ async function sendSupportEmail(req, res) {
   try {
     const info = await transporter.sendMail({
       from: "mono_sender@outlook.com",
-      to: sender_email,
+      to: "mono_help_center@outlook.com",
       subject: "Support Message | Monobank",
       text: problem_text,
       html:
-        "<h2>Вітаю) Я стикнувся з такою проблемою:</h2><p>" +
+        "<h2>Вітаю) Я" + sender_email + "стикнувся з такою проблемою:</h2><p>" +
         problem_text +
         "</p><h3>Розраховую на вашу допомогу =)</h3>",
     });

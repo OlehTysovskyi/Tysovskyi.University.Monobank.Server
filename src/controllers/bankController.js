@@ -66,16 +66,16 @@ const deleteBank = async (req, res) => {
   }
 };
 
-const getBankById = async (card_number) => {
+const getBankById = async () => {
   try {
     const bank_id = req.params.bankId;
 
-    const bank = await Bank.findByPk(bank_id);
+    const bank = await Bank.findOne({ where: { id: bank_id } });
     if (!bank) {
       return res.status(404).json({ error: "Bank not found" });
     }
 
-    res.status(200).json(bank);
+    res.status(200).json({ bank: bank });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

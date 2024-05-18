@@ -70,14 +70,10 @@ const getBankById = async (req, res) => {
   try {
     const bank_id = req.params.bankId;
 
-    console.error("Bank Id: " + bank_id);
-
     const bank = await Bank.findOne({ where: { id: bank_id } });
     if (!bank) {
       return res.status(404).json({ error: "Bank not found" });
     }
-
-    console.error("Bank: " + bank);
 
     res.status(200).json({ bank: bank });
   } catch (error) {

@@ -66,7 +66,7 @@ const deleteBank = async (req, res) => {
   }
 };
 
-const getBankById = async () => {
+const getBankById = async (req, res) => {
   try {
     const bank_id = req.params.bankId;
 
